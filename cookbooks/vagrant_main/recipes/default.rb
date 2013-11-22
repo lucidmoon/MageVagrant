@@ -62,14 +62,12 @@ sites.each do |name|
 
   # Checkout a copy from the trunk
   subversion site["host"] do
-    destination "/srv/www/#{site["host"]}/public_html"
-    repository site["repo"]
+    repository "#{site["repo"]}"
     revision "HEAD"
-    svn_username site["svn_username"]
-    svn_password site["svn_password"]
+    destination "/srv/www/#{site["host"]}/public_html"
     action :sync
   end
-
+  
    # Add site info in /etc/hosts
    bash "hosts" do
      code "echo 127.0.0.1 #{site["host"]} #{site["aliases"].join(' ')} >> /etc/hosts"
