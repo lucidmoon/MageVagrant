@@ -14,6 +14,8 @@ include_recipe "apache2::mod_php5"
 include_recipe "phpunit"
 include_recipe "magento-taf"
 include_recipe "database::mysql"
+include_recipe "nginx"
+include_recipe "php-fpm"
 
 
 
