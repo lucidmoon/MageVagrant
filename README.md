@@ -42,6 +42,7 @@ default Magento 1.7 ready to be installed
 - Remove Apache/PHP
 - Add Nginx latest
 - Add PHP 5.5.6 FPM
+- Cron
 - MySQL 5.5
 - Redis latest
 - Solr 4.X
@@ -51,3 +52,4 @@ default Magento 1.7 ready to be installed
 ### Future Setup
 
 - Add Ruby for our Ruby devs
+- Possibly add New Relic for server monitoring
