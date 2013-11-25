@@ -9,6 +9,9 @@ Vagrant::Config.run do |config|
   # Assign this VM to a host-only network IP, allowing you to access it via the IP.
   config.vm.network :hostonly, "192.168.10.99"
 
+  # Sync folder on workstation with VM folder.
+  config.vm.share_folder "zookal", "/var/www/nginx-default/zookal", "../zookal"
+
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|

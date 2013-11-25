@@ -1,28 +1,17 @@
 include_recipe "apt"
 include_recipe "git"
-include_recipe "ant"
 include_recipe "java"
-include_recipe "subversion"
 include_recipe "oh-my-zsh"
-include_recipe "apache2"
-include_recipe "apache2::mod_rewrite"
-include_recipe "apache2::mod_ssl"
 include_recipe "mysql::server"
 include_recipe "php"
 include_recipe "ruby"
-include_recipe "apache2::mod_php5"
 include_recipe "phpunit"
-include_recipe "magento-taf"
 include_recipe "database::mysql"
 include_recipe "nginx"
 include_recipe "php-fpm"
 
-
-
-
-
 # Install packages
-%w{ debconf vim screen mc subversion curl tmux make g++ libsqlite3-dev }.each do |a_package|
+%w{ debconf vim screen mc curl tmux make g++ libsqlite3-dev }.each do |a_package|
   package a_package
 end
 
@@ -53,22 +42,6 @@ sites.each do |name|
   execute "mkdir" do
     command "mkdir -p /srv/www/#{site["host"]}/public_html"
   end
-
-  # Add site to apache config
-  web_app site["host"] do
-    template "sites.conf.erb"
-    server_name site["host"]
-    server_aliases site["aliases"]
-    docroot "/srv/www/#{site["host"]}/public_html"
-  end  
-
-  # Checkout a copy from the trunk
-  subversion site["host"] do
-    repository "#{site["repo"]}"
-    revision "HEAD"
-    destination "/srv/www/#{site["host"]}/public_html"
-    action :sync
-  end
   
    # Add site info in /etc/hosts
    bash "hosts" do
@@ -82,11 +55,6 @@ sites.each do |name|
       action :create
    end
 
-end
-
-# Disable default site
-apache_site "default" do
-  enable false  
 end
 
 # Install phpmyadmin
@@ -111,23 +79,7 @@ template "#{node['php']['ext_conf_dir']}/xdebug.ini" do
   group "root"
   mode "0644"
   action :create
-  notifies :restart, resources("service[apache2]"), :delayed
-end
-
-# Install Webgrind
-git "/var/www/webgrind" do
-  repository 'git://github.com/jokkedk/webgrind.git'
-  reference "master"
-  action :sync
-end
-
-template "#{node[:apache][:dir]}/conf.d/webgrind.conf" do
-  source "webgrind.conf.erb"
-  owner "root"
-  group "root"
-  mode 0644
-  action :create
-  notifies :restart, resources("service[apache2]"), :delayed
+  notifies :restart, resources("service[nginx]"), :delayed
 end
 
 # Install php-curl

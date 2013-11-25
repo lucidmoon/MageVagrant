@@ -25,7 +25,7 @@ Getting MageVagrant up and running is as easy cloning the repo
 
 ````git clone https://github.com/amacgregor/MageVagrant.git magevagrant````
 
-And running the Vagrant box
+Then run the Vagrant box
 
 ````
 cd magevagrant/
@@ -35,6 +35,11 @@ vagrant up
 This will setup a full LNMP development environment and checkout,configure and enable a
 default Magento 1.7 ready to be installed
 
+## Use
+
+### Login Authentication
+vagrant/vagrant
+
 ## Packages for Zookal
 
 ### Current Setup
@@ -42,7 +47,7 @@ default Magento 1.7 ready to be installed
 - Remove Apache/PHP
 - Add Nginx latest
 - Add PHP 5.5.6 FPM
-- Cron
+- Add Cron
 - MySQL 5.5
 - Redis latest
 - Solr 4.X
@@ -51,5 +56,6 @@ default Magento 1.7 ready to be installed
 
 ### Future Setup
 
-- Add Ruby for our Ruby devs
-- Possibly add New Relic for server monitoring
+- Setup Ruby for our Ruby devs
+- New Relic for server monitoring
+- Magento TAF
