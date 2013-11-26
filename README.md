@@ -57,5 +57,7 @@ vagrant/vagrant
 ### Future Setup
 
 - Setup Ruby for our Ruby devs
+- Update PHP to 5.5
+- Update MySQL to 5.6
 - New Relic for server monitoring
 - Magento TAF

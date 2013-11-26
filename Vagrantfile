@@ -3,14 +3,15 @@
 
 Vagrant::Config.run do |config|
   # Set box configuration
-  config.vm.box = "lucid64"
-  config.vm.box_url = "http://files.vagrantup.com/lucid64.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Assign this VM to a host-only network IP, allowing you to access it via the IP.
   config.vm.network :hostonly, "192.168.10.99"
 
   # Sync folder on workstation with VM folder.
   config.vm.share_folder "zookal", "/var/www/nginx-default/zookal", "../zookal"
+  config.vm.share_folder "ssh", "/root/.ssh", ".ssh"
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.

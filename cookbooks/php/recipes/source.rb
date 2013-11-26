@@ -24,12 +24,10 @@ include_recipe "build-essential"
 include_recipe "xml"
 include_recipe "mysql::client" if configure_options =~ /mysql/
 
-pkgs = value_for_platform(
-    ["centos","redhat","fedora", "scientific"] =>
-        {"default" => %w{ bzip2-devel libc-client-devel curl-devel freetype-devel gmp-devel libjpeg-devel krb5-devel libmcrypt-devel libpng-devel openssl-devel t1lib-devel mhash-devel }},
-    [ "debian", "ubuntu" ] =>
-        {"default" => %w{ libbz2-dev libc-client2007e-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg62-dev libkrb5-dev libmcrypt-dev libpng12-dev libssl-dev libt1-dev }},
-    "default" => %w{ libbz2-dev libc-client2007e-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg62-dev libkrb5-dev libmcrypt-dev libpng12-dev libssl-dev libt1-dev }
+pkgs = value_for_platform_family(
+  ["rhel", "fedora"] => %w{ bzip2-devel libc-client-devel curl-devel freetype-devel gmp-devel libjpeg-devel krb5-devel libmcrypt-devel libpng-devel openssl-devel t1lib-devel mhash-devel },
+  [ "debian", "ubuntu" ] => %w{ libbz2-dev libc-client2007e-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg62-dev libkrb5-dev libmcrypt-dev libpng12-dev libssl-dev libt1-dev },
+  "default" => %w{ libbz2-dev libc-client2007e-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg62-dev libkrb5-dev libmcrypt-dev libpng12-dev libssl-dev libt1-dev }
   )
 
 pkgs.each do |pkg|
@@ -47,11 +45,23 @@ remote_file "#{Chef::Config[:file_cache_path]}/php-#{version}.tar.gz" do
   not_if "which php"
 end
 
+if node['php']['ext_dir']
+  directory node['php']['ext_dir'] do
+    owner "root"
+    group "root"
+    mode "0755"
+    recursive true
+  end
+  ext_dir_prefix = "EXTENSION_DIR=#{node['php']['ext_dir']}"
+else
+  ext_dir_prefix = ""
+end
+
 bash "build php" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOF
   tar -zxvf php-#{version}.tar.gz
-  (cd php-#{version} && ./configure #{configure_options})
+  (cd php-#{version} && #{ext_dir_prefix} ./configure #{configure_options})
   (cd php-#{version} && make && make install)
   EOF
   not_if "which php"
@@ -76,4 +86,5 @@ template "#{node['php']['conf_dir']}/php.ini" do
   owner "root"
   group "root"
   mode "0644"
+  variables(:directives => node['php']['directives'])
 end

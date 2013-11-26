@@ -10,6 +10,11 @@ include_recipe "database::mysql"
 include_recipe "nginx"
 include_recipe "php-fpm"
 
+Directory "/root/.ssh" do
+  action :create
+  mode 0700
+end
+
 # Install packages
 %w{ debconf vim screen mc curl tmux make g++ libsqlite3-dev }.each do |a_package|
   package a_package
