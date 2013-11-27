@@ -32,7 +32,7 @@ default['nginx']['binary']       = '/usr/sbin/nginx'
 
 case node['platform_family']
 when 'debian'
-  default['nginx']['user']       = 'www-data'
+  default['nginx']['user']       = 'vagrant'
   default['nginx']['init_style'] = 'runit'
 when 'rhel', 'fedora'
   default['nginx']['user']        = 'nginx'
@@ -42,7 +42,7 @@ when 'gentoo'
   default['nginx']['user']       = 'nginx'
   default['nginx']['init_style'] = 'init'
 else
-  default['nginx']['user']       = 'www-data'
+  default['nginx']['user']       = 'vagrant'
   default['nginx']['init_style'] = 'init'
 end
 

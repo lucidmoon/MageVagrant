@@ -1,0 +1,34 @@
+{
+  "name": "zookal-server",
+  "version": "0.1.0",
+  "description": "Additional setup for Zookal dev server",
+  "long_description": "",
+  "maintainer": "Zookal, Pty. Ltd.",
+  "maintainer_email": "tech@zookal.com",
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
+  },
+  "dependencies": {
+    "nginx": ">= 0.0.0",
+    "php": ">= 0.0.0",
+    "php-fpm": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "zookal-server": "Zookal dev server setup"
+  }
+}

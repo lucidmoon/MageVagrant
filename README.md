@@ -40,25 +40,34 @@ default Magento 1.7 ready to be installed
 ### Login Authentication
 vagrant/vagrant
 
+### Additional manual setup
+
+You need to do the following manually as these tasks are not working automatically yet:
+- edit '/etc/php5/fpm/pools/www.conf'
+-- user = vagrant
+-- group = vagrant
+- edit '/etc/php5/fpm/pool.d/www.conf'
+-- user = vagrant
+-- group = vagrant
+
 ## Packages for Zookal
 
 ### Current Setup
 
-- Remove Apache/PHP
-- Add Nginx latest
-- Nginx configuration
-- Add PHP 5.4
-- Add Cron
-- MySQL 5.5
-- Redis latest
-- Solr 4.X
-- SMTP Mail Catcher https://github.com/sj26/mailcatcher
-- Zookal Magento
+- PHP 5.3.10
+- Nginx 1.1.19
+- MySQL 5.5.34
 
 ### Future Setup
 
+- Zookal Magento
 - Setup Ruby for our Ruby devs
-- Update PHP to 5.5
+- Update PHP to 5.5 or at least 5.4
 - Update MySQL to 5.6
+- Nginx configuration
+- Redis
+- Solr 4.X
+- SMTP Mail Catcher https://github.com/sj26/mailcatcher
+- Cron
 - New Relic for server monitoring
 - Magento TAF

@@ -1,10 +1,10 @@
 {
     "id": "default",
-    "host": "magento.localhost.com",
+    "host": "zookal.dev",
     "repo": "https://github.com/amacgregor/mage_1702/trunk",
     "svn_username": "",
     "svn_pasword": "",
     "aliases": [
-        "magento.localhost.com"
+        "zookal.dev"
     ]
 }

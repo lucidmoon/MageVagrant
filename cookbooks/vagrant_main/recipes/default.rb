@@ -9,6 +9,8 @@ include_recipe "phpunit"
 include_recipe "database::mysql"
 include_recipe "nginx"
 include_recipe "php-fpm"
+include_recipe "php54"
+include_recipe "zookal-server"
 
 Directory "/root/.ssh" do
   action :create

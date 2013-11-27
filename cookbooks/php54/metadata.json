@@ -1,0 +1,32 @@
+{
+  "name": "php54",
+  "version": "0.1.0",
+  "description": "Updates php 5.3 to 5.4 on Ubuntu Precise",
+  "long_description": "",
+  "maintainer": "Zookal, Pty. Ltd.",
+  "maintainer_email": "tech@zookal.com",
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
+  },
+  "dependencies": {
+    "php": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "php54": "Updates php 5.3 to 5.4"
+  }
+}
