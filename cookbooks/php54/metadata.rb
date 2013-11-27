@@ -5,6 +5,7 @@ description       "Updates php 5.3 to 5.4 on Ubuntu Precise"
 version           "0.1.0"
 
 depends "php"
+depends "php-fpm"
 
 %w{ debian ubuntu }.each do |os|
   supports os
