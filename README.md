@@ -46,7 +46,8 @@ vagrant/vagrant
 
 - Remove Apache/PHP
 - Add Nginx latest
-- Add PHP 5.5.6 FPM
+- Nginx configuration
+- Add PHP 5.4
 - Add Cron
 - MySQL 5.5
 - Redis latest

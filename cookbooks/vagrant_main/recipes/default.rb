@@ -34,7 +34,7 @@ end
 
 
 bash "hosts" do
- code "echo 192.168.0.100 magento.localhost.com >> /etc/hosts"
+ code "echo 192.168.0.100 zookal.dev >> /etc/hosts"
 end
 
 # Configure sites
@@ -51,7 +51,7 @@ sites.each do |name|
    # Add site info in /etc/hosts
    bash "hosts" do
      code "echo 127.0.0.1 #{site["host"]} #{site["aliases"].join(' ')} >> /etc/hosts"
-     code "echo 192.168.0.100 magento.localhost.com >> /etc/hosts"
+     code "echo 192.168.0.100 zookal.dev >> /etc/hosts"
    end
 
    # Create database
