@@ -40,16 +40,6 @@ default Magento 1.7 ready to be installed
 ### Login Authentication
 vagrant/vagrant
 
-### Additional manual setup
-
-You need to do the following manually as these tasks are not working automatically yet:
-- edit '/etc/php5/fpm/pools/www.conf'
--- user = vagrant
--- group = vagrant
-- edit '/etc/php5/fpm/pool.d/www.conf'
--- user = vagrant
--- group = vagrant
-
 ## Packages for Zookal
 
 ### Current Setup
