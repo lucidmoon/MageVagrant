@@ -77,13 +77,6 @@ server {
         access_log off;
         add_header Cache-Control "public";
     }
-	
-	rewrite ^/minify/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
-    rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
-
-    location /lib/minify/ {
-        allow all;
-    }
 
     location /api {
         rewrite ^/api/rest /api.php?type=rest last;
