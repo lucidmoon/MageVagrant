@@ -13,6 +13,8 @@ Vagrant::Config.run do |config|
   config.vm.share_folder "zookal", "/var/www/nginx-default/zookal", "zookal"
   config.vm.share_folder "ssh", "/root/.ssh", ".ssh"
 
+  config.vm.customize ["modifyvm", :id, "--memory", 2048]
+
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
