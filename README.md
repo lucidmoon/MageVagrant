@@ -61,3 +61,5 @@ vagrant/vagrant
 - Cron
 - New Relic for server monitoring
 - Magento TAF
+- Install [https://github.com/Learnosity/vagrant-git](https://github.com/Learnosity/vagrant-git)
+- ...
