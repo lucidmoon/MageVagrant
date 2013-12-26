@@ -10,10 +10,8 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "192.168.10.99"
 
   # Sync folder on workstation with VM folder.
-  config.vm.share_folder "zookal", "/var/www/nginx-default/zookal", "zookal"
+  config.vm.share_folder "zookal", "/var/www/nginx-default/zookal", "../app"
   config.vm.share_folder "ssh", "/root/.ssh", ".ssh"
-
-  config.vm.customize ["modifyvm", :id, "--memory", 2048]
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
